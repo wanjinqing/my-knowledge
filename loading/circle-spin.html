@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .loader {
+      position: relative;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .loader.small {
+      -webkit-transform: scale(.5);
+      transform: scale(.5);
+    }
+
+    .loader.circle-line,
+    .loader.circle-round {
+      height: 5rem;
+    }
+    .loader.circle-spin {
+      border-radius: 50%;
+      border: .2rem solid rgba(0, 0, 0, .05);
+      width: 4rem;
+      height: 4rem;
+      box-sizing: content-box;
+    }
+
+    .loader.circle-spin .loader-placeholder {
+      position: absolute;
+      top: -.2rem;
+      left: -.2rem;
+      border-radius: 50%;
+      border: .2rem solid transparent;
+      border-top: .2rem solid #1ABC9C;
+      width: 4rem;
+      height: 4rem;
+      box-sizing: content-box;
+      -webkit-animation: circle-spin 1s ease infinite;
+      animation: circle-spin 1s ease infinite;
+    }
+
+    @keyframes circle-spin {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes circle-spin {
+      0% {
+        -webkit-transform: rotate(0);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader circle-spin small">
+    <div class="loader-placeholder"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .loader {
+      position: relative;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .loader.small {
+      -webkit-transform: scale(.5);
+      transform: scale(.5);
+    }
+
+    .loader.circle-line,
+    .loader.circle-round {
+      height: 5rem;
+    }
+    .loader.line-round {
+      width: 6rem;
+      height: .8rem;
+    }
+
+    .loader.line-round span {
+      position: absolute;
+      top: 0;
+      width: .8rem;
+      height: .8rem;
+      border-radius: 50%;
+      display: inline-block;
+      background: #1ABC9C;
+      -webkit-animation: line-round 1s ease infinite;
+      animation: line-round 1s ease infinite;
+    }
+
+    .loader.line-round span:nth-child(1) {
+      left: 0;
+      -webkit-animation-delay: .13s;
+      animation-delay: .13s;
+    }
+
+    .loader.line-round span:nth-child(2) {
+      left: 1.3rem;
+      -webkit-animation-delay: .26s;
+      animation-delay: .26s;
+    }
+
+    .loader.line-round span:nth-child(3) {
+      left: 2.6rem;
+      -webkit-animation-delay: .39s;
+      animation-delay: .39s;
+    }
+
+    .loader.line-round span:nth-child(4) {
+      left: 3.9rem;
+      -webkit-animation-delay: .52s;
+      animation-delay: .52s;
+    }
+
+    .loader.line-round span:nth-child(5) {
+      left: 5.2rem;
+      -webkit-animation-delay: .65s;
+      animation-delay: .65s;
+    }
+
+    @keyframes line-round {
+      0% {
+        opacity: 1;
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+      }
+
+      100% {
+        opacity: .2;
+        transform: scale(.2);
+        -webkit-transform: scale(.2);
+      }
+    }
+
+    @-webkit-keyframes line-round {
+      0% {
+        opacity: 1;
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+      }
+
+      100% {
+        opacity: .2;
+        transform: scale(.2);
+        -webkit-transform: scale(.2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader line-round small">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</body>
+</html>
