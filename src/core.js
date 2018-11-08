@@ -229,16 +229,15 @@ define([
 
     isPlainObject: function (obj) {
       var key;
-
       // Must be an Object.
       // Because of IE, we also have to check the presence of the constructor property.
       // Make sure that DOM nodes and window objects don't pass through, as well
       if (!obj || jQuery.type(obj) !== "object" || obj.nodeType || jQuery.isWindow(obj)) {
         return false;
       }
-
       try {
         // Not own constructor property must be Object
+        // constructor && !constructor.prototype.isPrototypeOf && !constructor
         if (obj.constructor &&
           !hasOwn.call(obj, "constructor") &&
           !hasOwn.call(obj.constructor.prototype, "isPrototypeOf")) {
@@ -393,7 +392,7 @@ define([
 
       return -1;
     },
-
+    // 合并 NodeList
     merge: function (first, second) {
       var len = +second.length,
         j = 0,
@@ -526,7 +525,7 @@ define([
     if (type === "function" || jQuery.isWindow(obj)) {
       return false;
     }
-
+    // 元素 && length
     if (obj.nodeType === 1 && length) {
       return true;
     }

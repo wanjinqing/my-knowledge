@@ -17,8 +17,8 @@ define([
 
 function createSafeFragment( document ) {
 	var list = nodeNames.split( "|" ),
-		safeFrag = document.createDocumentFragment();
-
+    safeFrag = document.createDocumentFragment();
+  // safeFrag = document-fragment;
 	if ( safeFrag.createElement ) {
 		while ( list.length ) {
 			safeFrag.createElement(
@@ -283,18 +283,18 @@ jQuery.extend({
 	},
 
 	buildFragment: function( elems, context, scripts, selection ) {
+    
 		var j, elem, contains,
 			tmp, tag, tbody, wrap,
 			l = elems.length,
 
-			// Ensure a safe fragment
-			safe = createSafeFragment( context ),
+			// Ensure a safe fragment, 确保是一个安全的片段
+      safe = createSafeFragment( context ),
 
 			nodes = [],
-			i = 0;
-
+      i = 0;
 		for ( ; i < l; i++ ) {
-			elem = elems[ i ];
+      elem = elems[ i ];
 
 			if ( elem || elem === 0 ) {
 
@@ -306,16 +306,19 @@ jQuery.extend({
 				} else if ( !rhtml.test( elem ) ) {
 					nodes.push( context.createTextNode( elem ) );
 
-				// Convert html into DOM nodes
+        // Convert html into DOM nodes
+        // html => dom nodes
 				} else {
+
+          // <div></div>
 					tmp = tmp || safe.appendChild( context.createElement("div") );
-
 					// Deserialize a standard representation
-					tag = (rtagName.exec( elem ) || [ "", "" ])[ 1 ].toLowerCase();
-					wrap = wrapMap[ tag ] || wrapMap._default;
-
-					tmp.innerHTML = wrap[1] + elem.replace( rxhtmlTag, "<$1></$2>" ) + wrap[2];
-
+          tag = (rtagName.exec( elem ) || [ "", "" ])[ 1 ].toLowerCase();
+          // [0, '', ''] / [ 1, "X<div>", "</div>"  ]
+          wrap = wrapMap[ tag ] || wrapMap._default;
+          
+          tmp.innerHTML = wrap[1] + elem.replace( rxhtmlTag, "<$1></$2>" ) + wrap[2];
+          
 					// Descend through wrappers to the right content
 					j = wrap[0];
 					while ( j-- ) {
@@ -347,7 +350,9 @@ jQuery.extend({
 						}
 					}
 
-					jQuery.merge( nodes, tmp.childNodes );
+          // [], NodeList[img, div]
+          jQuery.merge( nodes, tmp.childNodes );
+          
 
 					// Fix #12392 for WebKit and IE > 9
 					tmp.textContent = "";
@@ -356,9 +361,8 @@ jQuery.extend({
 					while ( tmp.firstChild ) {
 						tmp.removeChild( tmp.firstChild );
 					}
-
 					// Remember the top-level container for proper cleanup
-					tmp = safe.lastChild;
+          tmp = safe.lastChild;
 				}
 			}
 		}
@@ -406,7 +410,7 @@ jQuery.extend({
 
 		tmp = null;
 
-		return safe;
+    return safe;
 	},
 
 	cleanData: function( elems, /* internal */ acceptData ) {

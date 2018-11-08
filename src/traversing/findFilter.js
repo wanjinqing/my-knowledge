@@ -52,7 +52,9 @@ jQuery.filter = function( expr, elems, not ) {
 };
 
 jQuery.fn.extend({
+  // 查找元素
 	find: function( selector ) {
+    
 		var i,
 			ret = [],
 			self = this,
